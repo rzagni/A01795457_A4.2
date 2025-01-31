@@ -139,7 +139,7 @@ def main():
         print_plus(f'{"Word": >26}  {"Frequency": >10}', ofile)
         print_plus(f'{"-"*26}  {"-"*10}', ofile)
         for word, frequency in sorted(
-            word_map.items(), key=lambda x: x[1], reverse=True):
+                word_map.items(), key=lambda x: x[1], reverse=True):
             print_plus(f'{word: >26}  {frequency: >10}', ofile)
         end_time = time.time()
         execution_time = end_time - start_time

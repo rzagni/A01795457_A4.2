@@ -76,7 +76,7 @@ def get_median(numbers):
         numbers (list): A list of numeric values.
 
     Returns:
-        int | float: The median of the numbers. Returns an integer 
+        int | float: The median of the numbers. Returns an integer
         if the median is a whole number.
     """
     sorted_numbers = sorted(numbers)
@@ -88,6 +88,7 @@ def get_median(numbers):
     else:
         median = sorted_numbers[numbers_len // 2]
     return int(median) if median.is_integer() else median
+
 
 def get_mode(numbers):
     """
@@ -109,7 +110,9 @@ def get_mode(numbers):
         return None
     for number in numbers:
         if frequency[number] == max_count:
-            return int(number) if isinstance(number, float) and number.is_integer() else number
+            if isinstance(number, float) and number.is_integer():
+                return int(number)
+            return number
     return None
 
 
@@ -121,7 +124,7 @@ def get_variance(numbers):
         numbers (list): A list of numeric values.
 
     Returns:
-        int | float: The variance of the numbers. Returns an integer 
+        int | float: The variance of the numbers. Returns an integer
         if the variance is a whole number.
     """
     local_mean = get_mean(numbers)
@@ -131,6 +134,7 @@ def get_variance(numbers):
         variance = int(variance)
     return variance
 
+
 def get_std_dev(variance_var):
     """
     Calculates the standard deviation from the variance.
@@ -139,13 +143,14 @@ def get_std_dev(variance_var):
         variance (float): The variance of a list of numbers.
 
     Returns:
-        int | float: The standard deviation. Returns an integer 
+        int | float: The standard deviation. Returns an integer
         if the standard deviation is a whole number.
     """
     std_dev = variance_var ** 0.5
     if isinstance(std_dev, float) and std_dev.is_integer():
         std_dev = int(std_dev)
     return std_dev
+
 
 def print_plus(content, file_handler):
     """
