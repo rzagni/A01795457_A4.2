@@ -98,6 +98,8 @@ def main():
     - Validates that the file is ASCII-encoded.
     - Parses words from the file while filtering invalid words.
     - Counts occurrences of each valid word.
+    - Orders the list base on the word frequency from highest to lowest
+      frequency.
     - Outputs the results to both the console and a file.
     - Displays execution time.
 
@@ -136,10 +138,12 @@ def main():
     with open(OUTPUT_FILE, "a", encoding="ascii") as ofile:
         print_plus(f'{"Word": >26}  {"Frequency": >10}', ofile)
         print_plus(f'{"-"*26}  {"-"*10}', ofile)
-        for word, frequency in word_map.items():
+        for word, frequency in sorted(
+            word_map.items(), key=lambda x: x[1], reverse=True):
             print_plus(f'{word: >26}  {frequency: >10}', ofile)
-        print_plus(f'Execution time: {time.time() - start_time: .5f} \
-                   seconds\n', ofile)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print_plus(f'Execution time: {execution_time:.5f} seconds\n', ofile)
 
 
 if __name__ == "__main__":

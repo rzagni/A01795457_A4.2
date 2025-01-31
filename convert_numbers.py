@@ -160,6 +160,7 @@ def main():
 
     if not is_ascii(input_file):
         print(f'Unable to open input file: {input_file}')
+        print('file doesn\'t exist or is not in ASCII format')
         sys.exit(1)
 
     valid_numbers = []
@@ -169,14 +170,12 @@ def main():
             line = line.strip()
             try:
                 input_number = float(line)
-                if math.isnan(input_number):
+                if not math.isfinite(input_number):
                     raise ValueError
-                if input_number in (float('inf'), float('-inf')):
-                    raise ValueError
-                valid_numbers.append(input_number)
                 if input_number.is_integer():
-                    input_number = int(input_number)
-                valid_numbers.append(input_number)
+                    valid_numbers.append(int(input_number))
+                else:
+                    valid_numbers.append(input_number)
             except ValueError:
                 print(f"Line {line_number} is not a valid number: {line}")
                 continue
@@ -188,12 +187,15 @@ def main():
         print_plus(f'{"-"*15}  {"-"*30}  {"-"*12}', ofile)
         for number in valid_numbers:
             decimal_str = (
-                f"{number:,.6f}" if isinstance(number, float)
-                else f"{number:,}"
+                f"{number}" if isinstance(number, float)
+                else f"{number}"
             )
             binary_str = decimal_to_binary(number).rjust(30)
             hex_str = decimal_to_hexa(number).rjust(12)
             print_plus(f'{decimal_str:>15}  {binary_str}  {hex_str}', ofile)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print_plus(f'Execution time: {execution_time:.5f} seconds\n', ofile)
 
 
 if __name__ == "__main__":

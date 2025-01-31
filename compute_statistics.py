@@ -8,6 +8,8 @@ append the output, otherwise a new file will be created.
 
 Usage:
     python compute_statistics.py input_file
+
+Author: Renzo Zagni
 """
 
 import sys
