@@ -8,6 +8,8 @@ a new file will be created.
 
 Usage:
     python convert_numbers.py input_file
+
+Author: Renzo Zagni
 """
 
 import sys

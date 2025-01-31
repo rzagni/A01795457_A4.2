@@ -10,17 +10,7 @@ If the output file exist, the program will append the output, otherwise a new
 file will be created.
 
 Usage:
-    python wordCount.py input_file
-
-Features:
-- Reads words from an ASCII text file.
-- Filters out invalid words.
-- Counts the frequency of valid words.
-- Outputs results to the console and a file.
-- Displays execution time.
-
-Output:
-- A formatted word frequency table stored in 'WordCountResults.txt'.
+    python word_count.py input_file
 
 Author: Renzo Zagni
 """
