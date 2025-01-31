@@ -57,9 +57,13 @@ def get_mean(numbers):
         numbers (list): A list of numeric values.
 
     Returns:
-        float: The mean of the numbers.
+        int | float: The mean of the numbers. Returns an integer
+        if the mean is a whole number.
     """
-    return sum(numbers) / len(numbers)
+    mean = sum(numbers) / len(numbers)
+    if mean.is_integer():
+        return int(mean)
+    return mean
 
 
 def get_median(numbers):
@@ -70,36 +74,41 @@ def get_median(numbers):
         numbers (list): A list of numeric values.
 
     Returns:
-        float: The median of the numbers.
+        int | float: The median of the numbers. Returns an integer 
+        if the median is a whole number.
     """
     sorted_numbers = sorted(numbers)
     numbers_len = len(numbers)
     if numbers_len % 2 == 0:
         mid1 = sorted_numbers[numbers_len // 2 - 1]
         mid2 = sorted_numbers[numbers_len // 2]
-        return (mid1 + mid2) / 2
-    return sorted_numbers[numbers_len // 2]
-
+        median = (mid1 + mid2) / 2
+    else:
+        median = sorted_numbers[numbers_len // 2]
+    return int(median) if median.is_integer() else median
 
 def get_mode(numbers):
     """
-    Calculates the mode(s) of a list of numbers.
+    Calculates the mode(s) of a list of numbers. If multiple modes
+    exit, the program will return the first it finds
 
     Args:
         numbers (list): A list of numeric values.
 
     Returns:
-        list: A list of modes (most frequently occurring numbers).
+        int | float | None: The most frequently occurring number,
+        or None if no mode exists.
     """
     frequency = {}
-    modes = []
     for number_index in numbers:
         frequency[number_index] = frequency.get(number_index, 0) + 1
     max_count = max(frequency.values())
-    for number_index, count in frequency.items():
-        if count == max_count:
-            modes.append(number_index)
-    return modes
+    if max_count == 1:
+        return None
+    for number in numbers:
+        if frequency[number] == max_count:
+            return int(number) if isinstance(number, float) and number.is_integer() else number
+    return None
 
 
 def get_variance(numbers):
@@ -110,12 +119,15 @@ def get_variance(numbers):
         numbers (list): A list of numeric values.
 
     Returns:
-        float: The variance of the numbers.
+        int | float: The variance of the numbers. Returns an integer 
+        if the variance is a whole number.
     """
     local_mean = get_mean(numbers)
     variance_sum = sum((x - local_mean) ** 2 for x in numbers)
-    return variance_sum / len(numbers)
-
+    variance = variance_sum / len(numbers)
+    if isinstance(variance, float) and variance.is_integer():
+        variance = int(variance)
+    return variance
 
 def get_std_dev(variance_var):
     """
@@ -125,10 +137,13 @@ def get_std_dev(variance_var):
         variance (float): The variance of a list of numbers.
 
     Returns:
-        float: The standard deviation.
+        int | float: The standard deviation. Returns an integer 
+        if the standard deviation is a whole number.
     """
-    return variance_var ** 0.5
-
+    std_dev = variance_var ** 0.5
+    if isinstance(std_dev, float) and std_dev.is_integer():
+        std_dev = int(std_dev)
+    return std_dev
 
 def print_plus(content, file_handler):
     """
