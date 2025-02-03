@@ -1,0 +1,42 @@
+Mean: 241.91228070175438
+Median: 239
+Mode: 393
+Variance: 21139.286255840605
+Standard Deviation: 145.39355644539617
+Execution time: 0.00452 seconds
+
+Mean: 250.7840161861406
+Median: 247
+Mode: 230
+Variance: 20795.888043983545
+Standard Deviation: 144.20779467138226
+Execution time: 0.00415 seconds
+
+Mean: 249.77621989860583
+Median: 249
+Mode: 94
+Variance: 21118.950393821877
+Standard Deviation: 145.3236057694065
+Execution time: 0.01414 seconds
+
+Mean: 149.00267347908746
+Median: 147.75
+Mode: 123.75
+Variance: 17009.268218511454
+Standard Deviation: 130.41958525663028
+Execution time: 0.02231 seconds
+
+Mean: 241.49511400651465
+Median: 241
+Mode: 393
+Variance: 21229.172361669967
+Standard Deviation: 145.70234164786086
+Execution time: 0.00292 seconds
+
+Mean: 187906599279774433280
+Median: 188008049965542998016
+Mode: None
+Variance: 11534749616069340657613597980597774450688
+Standard Deviation: 107399951657667608576
+Execution time: 0.00520 seconds
+
